@@ -7,7 +7,7 @@ public class Type3PlayerController : MonoBehaviour
     public float JumpForce = 2f;
     public float gravityModfier;
     public bool isOnGround = true;
-
+    Animator animator;
 
 
     void Start()
@@ -15,6 +15,16 @@ public class Type3PlayerController : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModfier;
 
+        animator = GetComponent<Animator>();
+
+        DoRun();
+
+    }
+
+    private void DoRun()
+    {
+        animator.SetFloat("Speed_f", 1.0f);
+        animator.SetBool("Static_b", false);
     }
 
     void Update()
