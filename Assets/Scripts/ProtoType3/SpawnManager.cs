@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
 
     public GameObject prefab;
-    public float speed = 5;
+    public float speed = 10;
     public float delay = 5;
     float time = 0;
     float x = 45;
@@ -17,6 +17,8 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
+        if (Type3PlayerController.Instance.gameOver)
+            return;
         if (time < delay)
         {
             time += Time.deltaTime;
@@ -36,7 +38,7 @@ public class SpawnManager : MonoBehaviour
                 continue;
             var pos = obj.transform.position;
 
-            if (pos.x < -0.5f)
+            if (pos.x < -5f)
                 obj.SetActive(false);
             else
             {
